@@ -1,4 +1,4 @@
-package br.com.model
+package br.com.model;
 
 public class Endereco {
 	private String cep;
@@ -9,6 +9,6 @@ public class Endereco {
 	private String estado;
 
 	public String toString() {
-	
+		return "WIP";
 	}
 }

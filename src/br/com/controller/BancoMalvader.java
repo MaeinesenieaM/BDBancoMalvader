@@ -1,6 +1,6 @@
-package br.com.control;
+package br.com.controller;
 
-public class BancoMalvade {
+public class BancoMalvader {
 	private String nome;
 
 
