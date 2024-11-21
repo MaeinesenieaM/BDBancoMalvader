@@ -18,7 +18,7 @@ public class BancoController {
 	}
 	
 	public Conta consultarConta(int numeroConta) {
-		
+		return new Conta();
 	}
 	
 	public void salvarDados() {

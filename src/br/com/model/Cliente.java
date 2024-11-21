@@ -1,6 +1,6 @@
 package br.com.model;
 
-import br.com.model.Usuario;
+import br.com.model.Usuario.tipoUsuario;
 
 public class Cliente extends Usuario {
 	private String senha;
@@ -31,5 +31,9 @@ public class Cliente extends Usuario {
 	
 	public String getSenha() {
 		return this.senha;
+	}
+	
+	public String getTipoUsuario() {
+		return tipoUsuario.CLIENTE.toString();
 	}
 }

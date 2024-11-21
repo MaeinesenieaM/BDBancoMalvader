@@ -1,5 +1,6 @@
 package br.com.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Usuario {
@@ -8,7 +9,12 @@ public class Usuario {
 	private String cpf;
 	private LocalDate dataNascimento;
 	private String telefone;
-	private String endereco;
+	private Endereco endereco;
+
+	public enum tipoUsuario {
+		FUNCIONARIO,
+		CLIENTE
+	}
 
 	public boolean login(String senha) {
 		return false;
@@ -42,7 +48,7 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 	
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 	
@@ -58,15 +64,15 @@ public class Usuario {
 		return this.cpf;
 	}
 	
-	public LocalDate getDataNascimento() {
-		return this.dataNascimento;
+	public Date getDataNascimento() {
+		return Date.valueOf(this.dataNascimento);
 	}
 	
 	public String getTelefone() {
 		return this.telefone;
 	}
 	
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return this.endereco;
 	}
 }

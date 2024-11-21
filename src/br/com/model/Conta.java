@@ -1,7 +1,5 @@
 package br.com.model;
 
-import br.com.model.Cliente;
-
 public class Conta {
 	private int numero;
 	private String agencia;

@@ -1,7 +1,5 @@
 package br.com.model;
 
-import br.com.model.Funcionario;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

@@ -1,9 +1,5 @@
 package br.com.model;
 
-import br.com.model.Conta;
-import br.com.model.Usuario;
-import br.com.model.Cliente;
-
 public class Funcionario extends Usuario {
 	private String codigoFuncionario;
 	private String cargo;
@@ -18,11 +14,11 @@ public class Funcionario extends Usuario {
 	}
 
 	public Conta consultarDadosConta(int numeroConta) {
-
+		return new Conta();
 	}
 
 	public Cliente consultarDadosCliente(int idCliente) {
-
+		return new Cliente();
 	}
 
 	public void alterarDadosConta(Conta conta) {
@@ -39,5 +35,33 @@ public class Funcionario extends Usuario {
 
 	public void gerarRelatorioMovimentacao() {
 
+	}
+	
+	public void setCodigofuncionario(String codigo) {
+		this.codigoFuncionario = codigo;
+	}
+	
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public String getCodigofuncionario() {
+		return this.codigoFuncionario;
+	}
+	
+	public String getCargo() {
+		return this.cargo;
+	}
+	
+	public String getSenha() {
+		return this.senha;
+	}
+	
+	public String getTipoUsuario() {
+		return tipoUsuario.FUNCIONARIO.toString();
 	}
 }
