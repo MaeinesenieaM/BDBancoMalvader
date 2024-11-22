@@ -3,6 +3,8 @@ package br.com.model;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import br.com.dao.UsuarioDAO;
+
 public class Usuario {
 	private int id;
 	private String nome;
@@ -17,7 +19,8 @@ public class Usuario {
 	}
 
 	public boolean login(String senha) {
-		return false;
+		String senhaDAO = UsuarioDAO.findPassword(this.id);
+		return senhaDAO == senha;
 	}
 
 	public void logout() {
@@ -45,7 +48,7 @@ public class Usuario {
 	}
 	
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		if (telefone != null) this.telefone = telefone;
 	}
 	
 	public void setEndereco(Endereco endereco) {
