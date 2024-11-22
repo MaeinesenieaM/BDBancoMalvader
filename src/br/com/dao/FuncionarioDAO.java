@@ -40,7 +40,7 @@ public class FuncionarioDAO {
 	}
 	
 	static public void delete(int id) {
-		String comando_sql = "DELETE FROM funcionario WHERE id_usuario = ?";
+		String comando_sql = "DELETE FROM funcionario WHERE id_endereco = ?";
 		try (Connection conexao = ConnectionFactory.getConnection()) {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setInt(1, id);

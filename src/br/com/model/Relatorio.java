@@ -15,4 +15,28 @@ public class Relatorio {
 	public void exportarParaExcel() {
 		
 	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	public void setDataGeracao(LocalDateTime dataGeracao) {
+		this.dataGeracao = dataGeracao;
+	}
+	
+	public void setDados(List<String> dados) {
+		this.dados = dados;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+	
+	public LocalDateTime getDataGeracao() {
+		return dataGeracao;
+	}
+	
+	public List<String> getDados() {
+		return dados;
+	}
 }

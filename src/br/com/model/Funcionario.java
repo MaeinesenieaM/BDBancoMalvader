@@ -50,15 +50,15 @@ public class Funcionario extends Usuario {
 	}
 	
 	public String getCodigofuncionario() {
-		return this.codigoFuncionario;
+		return codigoFuncionario;
 	}
 	
 	public String getCargo() {
-		return this.cargo;
+		return cargo;
 	}
 	
 	public String getSenha() {
-		return this.senha;
+		return senha;
 	}
 	
 	public String getTipoUsuario() {

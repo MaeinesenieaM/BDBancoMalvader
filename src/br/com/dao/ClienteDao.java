@@ -36,7 +36,7 @@ public class ClienteDao {
 	}
 	
 	static public void delete(int id) {
-		String comando_sql = "DELETE FROM cliente WHERE id_usuario = ?";
+		String comando_sql = "DELETE FROM cliente WHERE id_cliente = ?";
 		try (Connection conexao = ConnectionFactory.getConnection()) {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setInt(1, id);

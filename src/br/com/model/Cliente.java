@@ -30,7 +30,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public String getSenha() {
-		return this.senha;
+		return senha;
 	}
 	
 	public String getTipoUsuario() {

@@ -9,4 +9,20 @@ public class ContaCorrente extends Conta {
 	public double consultarLimite() {
 		return 0.0;
 	}
+
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
+	
+	public void setDataVencimento(LocalDate dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+	
+	public double getLimite() {
+		return limite;
+	}
+	
+	public LocalDate getDataVencimento() {
+		return dataVencimento;
+	}
 }

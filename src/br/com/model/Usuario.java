@@ -56,26 +56,26 @@ public class Usuario {
 	}
 	
 	public int getID() {
-		return this.id;
+		return id;
 	}
 	
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 	
 	public String getCPF() {
-		return this.cpf;
+		return cpf;
 	}
 	
 	public Date getDataNascimento() {
-		return Date.valueOf(this.dataNascimento);
+		return Date.valueOf(dataNascimento);
 	}
 	
 	public String getTelefone() {
-		return this.telefone;
+		return telefone;
 	}
 	
 	public Endereco getEndereco() {
-		return this.endereco;
+		return endereco;
 	}
 }
