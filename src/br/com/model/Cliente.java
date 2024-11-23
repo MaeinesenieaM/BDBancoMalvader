@@ -1,7 +1,5 @@
 package br.com.model;
 
-import br.com.model.Usuario.tipoUsuario;
-
 public class Cliente extends Usuario {
 	private String senha;
 
