@@ -66,6 +66,11 @@ public class RelatorioDAO {
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
 			
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
 			relatorio.setTipo(data.getString("tipo_relatorio"));
 			relatorio.setDataGeracao(data.getTimestamp("data_geracao").toLocalDateTime());
 

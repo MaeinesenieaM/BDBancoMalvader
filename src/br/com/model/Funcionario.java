@@ -1,5 +1,8 @@
 package br.com.model;
 
+import br.com.dao.FuncionarioDAO;
+import br.com.dao.UsuarioDAO;
+
 public class Funcionario extends Usuario {
 	private String codigoFuncionario;
 	private String cargo;
@@ -30,7 +33,11 @@ public class Funcionario extends Usuario {
 	}
 
 	public void cadastrarFuncionario(Funcionario funcionario) {
-
+		UsuarioDAO.save(funcionario);
+		Usuario usuario = UsuarioDAO.findByCPF(funcionario.getCPF());
+		funcionario.setID(usuario.getID());
+		System.out.println(usuario.getID());
+		FuncionarioDAO.save(funcionario);
 	}
 
 	public void gerarRelatorioMovimentacao() {

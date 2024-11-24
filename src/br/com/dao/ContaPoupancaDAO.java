@@ -60,6 +60,11 @@ public class ContaPoupancaDAO {
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
 			
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
 			conta.setNumero(data.getInt("numero_conta"));
 			conta.setAgencia(data.getString("agencia"));
 			conta.setSaldo(data.getDouble("saldo"));

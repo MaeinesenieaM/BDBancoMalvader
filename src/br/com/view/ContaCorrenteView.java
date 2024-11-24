@@ -29,7 +29,7 @@ public class ContaCorrenteView extends JPanel {
 		PanelUtils.create(this, new JLabel("Telefone:"), 240, 100, 100, 20);
 		JTextField telefoneField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 100, 140, 20);
 		
-		PanelUtils.create(this, new JLabel("Endereo Cliente:"), 10, 130, 100, 20);
+		PanelUtils.create(this, new JLabel("Endereço Cliente:"), 10, 130, 100, 20);
 		JTextField enderecoField = (JTextField) PanelUtils.create(this, new JTextField(), 90, 130, 140, 20);
 		PanelUtils.create(this, new JLabel("CEP:"), 240, 130, 100, 20);
 		JTextField cepField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 130, 140, 20);

@@ -52,6 +52,7 @@ public class FuncionarioDAO {
 		}
 	}
 	
+	//Retorna NULL se a mesa encontrada estiver vazia.
 	static public Funcionario findById(int id) {
 		Funcionario funcionario = new Funcionario();
 		
@@ -60,7 +61,12 @@ public class FuncionarioDAO {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
-						
+			
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
 			funcionario.setID(data.getInt("funcionario.id_usuario"));
 			funcionario.setNome(data.getString("nome"));
 			funcionario.setCPF(data.getString("cpf"));

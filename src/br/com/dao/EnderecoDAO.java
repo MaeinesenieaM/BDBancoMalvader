@@ -68,7 +68,12 @@ public class EnderecoDAO {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
-						
+			
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
 			endereco.setCEP(data.getString("cep"));
 			endereco.setLocal(data.getString("local"));
 			endereco.setNumeroCasa(data.getInt("numero_casa"));

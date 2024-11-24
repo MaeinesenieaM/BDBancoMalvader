@@ -55,6 +55,11 @@ public class FuncionarioView extends JPanel {
 			if (window != null) window.switchPanel(new AlterarDadosView());
 		});
 		
+		cadastroButton.addActionListener(event -> {
+			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
+			if (window != null) window.switchPanel(new CadastroFuncionarioView());
+		});
+		
 		sairButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
 			if (window != null) window.switchPanel(new LoginView());

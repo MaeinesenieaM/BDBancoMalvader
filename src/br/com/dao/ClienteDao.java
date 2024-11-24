@@ -56,7 +56,12 @@ public class ClienteDao {
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
 						
-			cliente.setID(data.getInt("funcionario.id_usuario"));
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
+			cliente.setID(data.getInt("cliente.id_usuario"));
 			cliente.setNome(data.getString("nome"));
 			cliente.setCPF(data.getString("cpf"));
 			cliente.setDataNascimento(data.getDate("data_nascimento").toLocalDate());

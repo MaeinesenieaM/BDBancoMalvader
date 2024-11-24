@@ -119,13 +119,44 @@ public class UsuarioDAO {
 	//NO BANCO DE DADOS!!!
 	static public Usuario findById(int id) {
 		Usuario usuario = new Usuario();
-		String comando_sql = "SELECT * FROM usuario WHERE cliente.id_usuario = ?";
+		String comando_sql = "SELECT * FROM usuario WHERE id_usuario = ?";
 		try (Connection conexao = ConnectionFactory.getConnection()) {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
-						
-			usuario.setID(data.getInt("funcionario.id_usuario"));
+					
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
+			usuario.setID(data.getInt("id_usuario"));
+			usuario.setNome(data.getString("nome"));
+			usuario.setCPF(data.getString("cpf"));
+			usuario.setDataNascimento(data.getDate("data_nascimento").toLocalDate());
+			usuario.setTelefone(data.getString("telefone"));
+			
+			conexao.close();
+		} catch (SQLException error) {
+			error.printStackTrace();
+		}
+		return usuario;
+	}
+	
+	static public Usuario findByCPF(String cpf) {
+		Usuario usuario = new Usuario();
+		String comando_sql = "SELECT * FROM usuario WHERE cpf = ?";
+		try (Connection conexao = ConnectionFactory.getConnection()) {
+			PreparedStatement comando = conexao.prepareStatement(comando_sql);
+			comando.setString(1, cpf);
+			ResultSet data = comando.executeQuery();
+			
+			if (data.next() == false) {
+				System.out.println("TABLE VAZIA!!");
+				return null;
+			}
+			
+			usuario.setID(data.getInt("id_usuario"));
 			usuario.setNome(data.getString("nome"));
 			usuario.setCPF(data.getString("cpf"));
 			usuario.setDataNascimento(data.getDate("data_nascimento").toLocalDate());
