@@ -24,17 +24,17 @@ public class LoginView extends JPanel {
 		panel.add(sairButton);
 		
 		funcionarioButton.addActionListener(event -> {
-			JFrame window = (JFrame) SwingUtilities.getWindowAncestor(this);
-			JOptionPane.showMessageDialog(null, "vai para aba funcionario");
+			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
+			if (window != null) window.switchPanel(new FuncionarioView());
 		});
 		
 		clienteButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
-			window.switchPanel(new ClienteView());
+			if (window != null) window.switchPanel(new ClienteView());
 		});
 		
 		sairButton.addActionListener(event -> {
-			JFrame window = (JFrame) SwingUtilities.getWindowAncestor(this);
+			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
 			if (window != null) window.dispose();
 		});
 	}

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 public class MainView extends JFrame {
 	
 	public MainView() {
-		setTitle("Teste - Login");
+		setTitle("BancoMalvader");
 		setSize(500, 350);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

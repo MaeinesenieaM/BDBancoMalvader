@@ -3,10 +3,7 @@ package br.com.controller;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 
 import br.com.dao.ConnectionFactory;
 
@@ -17,7 +14,7 @@ public class BancoMalvader {
 
 
 	public static void main (String[] args) {
-		/*try {
+		try {
             // Set System L&F
 			UIManager.setLookAndFeel(
 					UIManager.getSystemLookAndFeelClassName());
@@ -33,7 +30,7 @@ public class BancoMalvader {
 		}
 		catch (IllegalAccessException e) {
 			// handle exception
-		} */
+		}
 		
 		SwingUtilities.invokeLater(() -> {
 			MainView window = new MainView();
