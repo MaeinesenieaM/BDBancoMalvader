@@ -151,10 +151,7 @@ public class UsuarioDAO {
 			comando.setString(1, cpf);
 			ResultSet data = comando.executeQuery();
 			
-			if (data.next() == false) {
-				System.out.println("TABLE VAZIA!!");
-				return null;
-			}
+			if (data.next() == false) throw new NullPointerException("NÃO FOI POSSIVEl ENCONTRAR USUARIO OU USUARIO NÃO EXISTE");
 			
 			usuario.setID(data.getInt("id_usuario"));
 			usuario.setNome(data.getString("nome"));
@@ -167,5 +164,26 @@ public class UsuarioDAO {
 			error.printStackTrace();
 		}
 		return usuario;
+	}
+	
+	static public int getIdByCPF(String cpf) {
+		int id = 0;
+		
+		String comando_sql = "SELECT * FROM usuario WHERE cpf = ?";
+		try (Connection conexao = ConnectionFactory.getConnection()) {
+			PreparedStatement comando = conexao.prepareStatement(comando_sql);
+			comando.setString(1, cpf);
+			ResultSet data = comando.executeQuery();
+			
+			if (data.next() == false) throw new NullPointerException("NÃO FOI POSSIVEl ENCONTRAR USUARIO OU USUARIO NÃO EXISTE");
+			
+			id = data.getInt("id_usuario");
+			
+			conexao.close();
+		} catch (SQLException error) {
+			error.printStackTrace();
+		}
+
+		return id;
 	}
 }

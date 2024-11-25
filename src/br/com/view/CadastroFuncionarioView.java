@@ -1,6 +1,7 @@
 package br.com.view;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -69,7 +70,7 @@ public class CadastroFuncionarioView extends JPanel {
 			
 			funcionario.setCargo(tipoBox.getSelectedItem().toString());
 			
-			funcionario.setDataNascimento(LocalDate.parse(dataNascencaField.getText()));
+			funcionario.setDataNascimento(LocalDate.parse(dataNascencaField.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 			funcionario.setTelefone(telefoneField.getText());
 			
 			Endereco endereco = new Endereco();

@@ -10,12 +10,12 @@ import br.com.model.Cliente;
 import br.com.model.ContaPoupanca;
 
 public class ContaPoupancaDAO {
-	static public void save(int id, ContaPoupanca conta) {
+	static public void save(ContaPoupanca conta) {
 		String comando_sql = "INSERT INTO conta_poupanca (taxa_rendimento, id_conta) VALUES (?, ?)";
 		try (Connection conexao = ConnectionFactory.getConnection()) {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setBigDecimal(1, BigDecimal.valueOf(conta.getTaxaRendimento()));
-			comando.setInt(2, id);
+			comando.setInt(2, ContaDAO.getIdByNumero(conta.getNumero()));
 			
 			comando.executeUpdate();
 			conexao.close();

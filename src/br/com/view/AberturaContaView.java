@@ -14,27 +14,25 @@ public class AberturaContaView extends JPanel {
 	private void placeComponents() {
 		this.setLayout(null);
 		
-		String[] tipos = {"Poupança", "Corrente"};
-		Object[][] data = { {0, "", "", 0.0, 0.0, LocalDate.now() } };
-		PanelUtils.create(this, new JLabel("Codigo:"), 10, 40, 60, 20);
-		JComboBox tipoBox = (JComboBox) PanelUtils.create(this, new JComboBox(tipos), 50, 40, 80, 20);
-		JButton pesquisarTipoButton = (JButton) PanelUtils.create(this, new JButton("GO"), 140, 40, 50, 20);
+		JButton contaCorrenteButton = (JButton) PanelUtils.create(this, new JButton("CONTA CORRENTE"), 10, 10, 150, 35);
 		
-		PanelUtils.create(this, new JLabel("Codigo:"), 200, 40, 60, 20);
-		JTextField nomeField = (JTextField) PanelUtils.create(this, new JTextField(), 240, 40, 160, 20);
-		JButton pesquisarNomeButton = (JButton) PanelUtils.create(this, new JButton("GO"), 410, 40, 50, 20);
-		
-		PanelUtils.create(this, new JLabel("CPF:"), 10, 70, 60, 20);
-		JTextField cpfField = (JTextField) PanelUtils.create(this, new JTextField(), 50, 70, 80, 20);
-		JButton pesquisarCPFButton = (JButton) PanelUtils.create(this, new JButton("GO"), 140, 70, 50, 20);
-		
-		JButton pesquisarTotalButton = (JButton) PanelUtils.create(this, new JButton("Pesquisar"), 250, 65, 140, 30);
-		
-		JButton sairButton = (JButton) PanelUtils.create(this, new JButton("Voltar"), 10, 10, 60, 20);
+		JButton contaPoupancaButton = (JButton) PanelUtils.create(this, new JButton("CONTA POUPANÇA"), 10, 55, 150, 35);
 
+		JButton sairButton = (JButton) PanelUtils.create(this, new JButton("Voltar"), 10, 100, 60, 20);
+
+		contaCorrenteButton.addActionListener(event -> {
+			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
+			if (window != null) window.switchPanel(new ContaCorrenteView());
+		});
+		
+		contaPoupancaButton.addActionListener(event -> {
+			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
+			if (window != null) window.switchPanel(new ContaPoupancaView());
+		});
+		
 		sairButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
-			if (window != null) window.switchPanel(new AlterarDadosView());
+			if (window != null) window.switchPanel(new FuncionarioView());
 		});
 	}
 }

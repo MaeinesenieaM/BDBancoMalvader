@@ -2,7 +2,7 @@ package br.com.model;
 
 
 public class ContaPoupanca extends Conta {
-	private double taxaRendimento;
+	private double taxaRendimento = 0.1;
 
 	public double calcularRendimento() {
 		return 0.0;

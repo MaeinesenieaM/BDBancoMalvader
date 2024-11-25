@@ -1,7 +1,20 @@
 package br.com.view;
 
-import javax.swing.*;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+
+import br.com.dao.ClienteDao;
+import br.com.dao.ContaDAO;
+import br.com.dao.ContaPoupancaDAO;
+import br.com.dao.UsuarioDAO;
+import br.com.model.Cliente;
+import br.com.model.Conta;
+import br.com.model.ContaPoupanca;
+import br.com.model.Endereco;
 import br.com.util.PanelUtils;
 
 public class ContaPoupancaView extends JPanel {
@@ -29,8 +42,8 @@ public class ContaPoupancaView extends JPanel {
 		PanelUtils.create(this, new JLabel("Telefone:"), 240, 100, 100, 20);
 		JTextField telefoneField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 100, 140, 20);
 		
-		PanelUtils.create(this, new JLabel("Endereo Cliente:"), 10, 130, 100, 20);
-		JTextField enderecoField = (JTextField) PanelUtils.create(this, new JTextField(), 90, 130, 140, 20);
+		PanelUtils.create(this, new JLabel("Valor:"), 10, 130, 100, 20);
+		JTextField valorField = (JTextField) PanelUtils.create(this, new JTextField(), 90, 130, 140, 20);
 		PanelUtils.create(this, new JLabel("CEP:"), 240, 130, 100, 20);
 		JTextField cepField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 130, 140, 20);
 		
@@ -48,6 +61,48 @@ public class ContaPoupancaView extends JPanel {
 		JTextField estadoField = (JTextField) PanelUtils.create(this, new JTextField(), 90, 220, 140, 20);
 		PanelUtils.create(this, new JLabel("Senha:"), 240, 220, 100, 20);
 		JTextField senhaClienteField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 220, 140, 20);
+		
+		JButton criarButton = (JButton) PanelUtils.create(this, new JButton("Abrir Conta"), 95, 5, 130, 30);
+		
+		criarButton.addActionListener(event -> {
+			
+			Cliente cliente;	
+			try { cliente = ClienteDao.findByCPF(cpfClienteField.getText()); 
+			} catch (NullPointerException error) {
+				cliente = new Cliente();
+				
+				cliente.setNome(nomeClienteField.getText());
+				cliente.setCPF(cpfClienteField.getText());
+				cliente.setDataNascimento(LocalDate.parse(dataNascimentoField.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+				cliente.setTelefone(telefoneField.getText());
+				cliente.setSenha(senhaClienteField.getText());
+				
+				Endereco endereco = new Endereco();
+				try { endereco.setCEP(cepField.getText(0, 8));
+				} catch (BadLocationException superError) { error.printStackTrace(); }
+				endereco.setEstado(estadoField.getText());
+				endereco.setCidade(cidadeField.getText());
+				endereco.setBairro(bairroField.getText());
+				endereco.setLocal(localField.getText());
+				endereco.setNumeroCasa(Integer.parseInt(numeroCasaField.getText()));
+				
+				cliente.setEndereco(endereco);
+				
+				UsuarioDAO.save(cliente);
+				cliente.setID(UsuarioDAO.getIdByCPF(cliente.getCPF()));
+				ClienteDao.save(cliente);
+			}
+			
+			ContaPoupanca conta = new ContaPoupanca();
+			
+			conta.setCliente(cliente);
+			conta.setAgencia(agenciaField.getText());
+			conta.setSaldo(Double.valueOf(valorField.getText()));
+			conta.setNumero(Integer.parseInt(numeroContaField.getText()));
+			
+			ContaDAO.save(conta);
+			ContaPoupancaDAO.save(conta);
+		});
 		
 		sairButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);

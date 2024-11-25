@@ -54,6 +54,8 @@ public class ContaCorrenteView extends JPanel {
 		PanelUtils.create(this, new JLabel("Data Vencimento:"), 240, 250, 100, 20);
 		JTextField dataVencimentoField = (JTextField) PanelUtils.create(this, new JTextField(), 330, 250, 140, 20);
 		
+		JButton criarButton = (JButton) PanelUtils.create(this, new JButton("Abrir Conta"), 95, 5, 130, 30);
+		
 		sairButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
 			if (window != null) window.switchPanel(new AberturaContaView());
