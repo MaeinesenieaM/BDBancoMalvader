@@ -60,11 +60,7 @@ public class ContaPoupancaDAO {
 			comando.setInt(1, id);
 			ResultSet data = comando.executeQuery();
 			
-			if (data.next() == false) {
-				System.out.println("TABLE VAZIA!!");
-				return null;
-			}
-			
+			if (data.next() == false) throw new NullPointerException("NÃO FOI POSSIVEl ENCONTRAR CONTA POPUANÇA OU CONTA POUPANÇA NÃO EXISTE");
 			conta.setNumero(data.getInt("numero_conta"));
 			conta.setAgencia(data.getString("agencia"));
 			conta.setSaldo(data.getDouble("saldo"));

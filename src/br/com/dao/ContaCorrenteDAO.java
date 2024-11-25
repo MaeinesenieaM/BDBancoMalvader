@@ -11,13 +11,13 @@ import br.com.model.Cliente;
 import br.com.model.ContaCorrente;
 
 public class ContaCorrenteDAO {
-	static public void save(int id, ContaCorrente conta) {
+	static public void save(ContaCorrente conta) {
 		String comando_sql = "INSERT INTO conta_corrente (limite, data_vencimento, id_conta) VALUES (?, ?, ?)";
 		try (Connection conexao = ConnectionFactory.getConnection()) {
 			PreparedStatement comando = conexao.prepareStatement(comando_sql);
 			comando.setBigDecimal(1, BigDecimal.valueOf(conta.getLimite()));
 			comando.setDate(2, Date.valueOf(conta.getDataVencimento()));
-			comando.setInt(3, id);
+			comando.setInt(3, ContaDAO.getIdByNumero(conta.getNumero()));
 			
 			comando.executeUpdate();
 			conexao.close();
