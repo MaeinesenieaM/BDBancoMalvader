@@ -4,41 +4,29 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import br.com.util.PanelUtils;
+
 public class FuncionarioView extends JPanel {
 	public FuncionarioView() {
-		placeComponents(this);
+		placeComponents();
 	}
 	
-	private void placeComponents(JPanel panel) {
-		panel.setLayout(null);
+	private void placeComponents() {
+		this.setLayout(null);
 		
-		JButton contaAbreButton = new JButton("ABERTURA DE CONTA");
-		contaAbreButton.setBounds(10, 10, 150, 30);
-		panel.add(contaAbreButton);
+		JButton contaAbreButton = (JButton) PanelUtils.create(this, new JButton ("ABERTURA DE CONTA"), 10, 10, 150, 30);
 		
-		JButton contaEncerraButton = new JButton("ENCERRAMENTO DE CONTA");
-		contaEncerraButton.setBounds(160, 10, 170, 30);
-		panel.add(contaEncerraButton);
+		JButton contaEncerraButton = (JButton) PanelUtils.create(this, new JButton ("ENCERRAMENTO DE CONTA"), 160, 10, 170, 30);
 		
-		JButton consultarDadosButton = new JButton("CONSULTAR DADOS");
-		consultarDadosButton.setBounds(10, 50, 150, 30);
-		panel.add(consultarDadosButton);
+		JButton consultarDadosButton = (JButton) PanelUtils.create(this, new JButton ("CONSULTAR DADOS"), 10, 50, 150, 30);
 		
-		JButton alterarDadosButton = new JButton("ALTERAR DADOS");
-		alterarDadosButton.setBounds(160, 50, 170, 30);
-		panel.add(alterarDadosButton);
+		JButton alterarDadosButton = (JButton) PanelUtils.create(this, new JButton ("ALTERAR DADOS"), 160, 50, 170, 30);
 		
-		JButton cadastroButton = new JButton("CADASTRO DE FUNCIONÁRIOS");
-		cadastroButton.setBounds(10, 90, 320, 30);
-		panel.add(cadastroButton);
+		JButton cadastroButton = (JButton) PanelUtils.create(this, new JButton ("CADASTRO DE FUNCIONÁRIOS"), 10, 90, 320, 30);
 		
-		JButton relatorioButton = new JButton("GERAR RELATÓRIOS");
-		relatorioButton.setBounds(10, 130, 320, 30);
-		panel.add(relatorioButton);
+		JButton relatorioButton = (JButton) PanelUtils.create(this, new JButton ("GERAR RELATÓRIOS"), 10, 130, 320, 30);
 		
-		JButton sairButton = new JButton("Sair");
-		sairButton.setBounds(10, 170, 60, 20);
-		panel.add(sairButton);
+		JButton sairButton = (JButton) PanelUtils.create(this, new JButton ("Sair"), 10, 170, 60, 20);
 		
 		contaAbreButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);

@@ -2,6 +2,8 @@ package br.com.view;
 
 import javax.swing.*;
 
+import br.com.util.PanelUtils;
+
 public class LoginView extends JPanel {
 
 	public LoginView() {
@@ -11,17 +13,11 @@ public class LoginView extends JPanel {
 	private void placeComponents(JPanel panel) {
 		panel.setLayout(null);
 		
-		JButton funcionarioButton = new JButton("Funcionário");
-		funcionarioButton.setBounds(10, 10, 100, 35);
-		panel.add(funcionarioButton);
+		JButton funcionarioButton = (JButton) PanelUtils.create(this, new JButton ("Funcionário"), 10, 10, 100, 35);
 		
-		JButton clienteButton = new JButton("Cliente");
-		clienteButton.setBounds(10, 55, 100, 35);
-		panel.add(clienteButton);
-		
-		JButton sairButton = new JButton("Sair");
-		sairButton.setBounds(10, 100, 60, 20);
-		panel.add(sairButton);
+		JButton clienteButton = (JButton) PanelUtils.create(this, new JButton ("Cliente"), 10, 55, 100, 35);
+
+		JButton sairButton = (JButton) PanelUtils.create(this, new JButton ("Sair"), 10, 100, 60, 20);
 		
 		funcionarioButton.addActionListener(event -> {
 			MainView window = (MainView) SwingUtilities.getWindowAncestor(this);
